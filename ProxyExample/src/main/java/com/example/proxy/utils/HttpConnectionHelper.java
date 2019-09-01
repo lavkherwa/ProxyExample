@@ -21,19 +21,23 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 public class HttpConnectionHelper {
 
 	private HttpURLConnection targetConnection = null;
+	
 	private URL targetUrl = null;
 
 	private String[] BLOCKED_RESPONSE_HEADERS = { "transfer-encoding" };
 
 	public HttpConnectionHelper(final String url) throws URISyntaxException, MalformedURLException {
+		
 		URI serviceUrl = new URI(url);
 		serviceUrl = serviceUrl.normalize();
-
+		
 		this.targetUrl = serviceUrl.toURL();
 	}
 
 	public void openConnection(final String requestMethod) throws IOException {
+		
 		targetConnection = (HttpURLConnection) targetUrl.openConnection();
+		
 		/* infinite timeout for this connection if provided 0 */
 		targetConnection.setConnectTimeout(5000);
 		targetConnection.setRequestMethod(requestMethod);

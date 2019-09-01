@@ -24,12 +24,15 @@ import com.example.proxy.utils.HttpConnectionHelper;
 @RequestMapping(path = { Proxy1.PATH_PART_QUERY_TARGET })
 public class Proxy1 {
 
-	static final String PATH_PART_QUERY_TARGET = "/api/proxy/**";
-	private String[] BLOCKED_REQUEST_HEADERS = { "authorization" }; // "host", "referer"
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	static final String PATH_PART_QUERY_TARGET = "/api/proxy/**";
+	
+	private String[] BLOCKED_REQUEST_HEADERS = { "authorization" }; // "host", "referer"
+	
 
 	private final BeanFactory beanFactory;
-
+	
 	public Proxy1(BeanFactory beanFactory) {
 		this.beanFactory = beanFactory;
 	}
